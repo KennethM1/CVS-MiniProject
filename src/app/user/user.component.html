@@ -1,0 +1,75 @@
+<h1>User List</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">DOB</th>
+            <th scope="col">Age</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of users">
+            <td>
+                {{user.fname}}
+            </td>
+            <td>
+                {{user.lname}}
+            </td>
+            <td>
+                {{user.DOB|date}}
+            </td>
+            <td>
+                {{user.age}}
+            </td>
+            <button (click)="deleteUser(user)">Delete</button>
+            <button (click)="deleteUser(user)">Edit</button>
+        </tr>
+
+    </tbody>
+    <!-- <button (click)="onclick()">Click Me</button> -->
+</table>
+
+<form #f="ngForm" (ngSubmit)="addUser(f)">
+
+    <div ngModelGroup="newUser" #newUser="ngModelGroup">
+        <div class="form-group">
+            <!-- <label for="id">ID:</label>
+    <input id="id" type="text"> -->
+            <label for="fname">First Name</label>
+            <input ngModel #fname="ngModel" class="fname" name="fname" id="fname" type="text" form-control>
+            <label for="lname">Last Name</label>
+            <input ngModel #lname="ngModel" class="lname" name="lname" id="lname" type="text" form-control>
+            <label for="DOB">DOB</label>
+            <input ngModel #DOB="ngModel" class="DOB" name="DOB" id="DOB" type="date" form-control>
+            <!-- <label for="age">Age</label>
+            <input ngModel #age="ngModel" class="age" name="age" id="age" type="text" form-control> -->
+            <button>Add User</button>
+        </div>
+    </div>
+
+</form>
+
+<br>
+<br>
+<form #g="ngForm" (ngSubmit)="editUser(g)">
+
+    <div ngModelGroup="newUser" #newUser="ngModelGroup">
+        <div class="form-group">
+            <!-- <label for="id">ID:</label>
+    <input id="id" type="text"> -->
+            <label for="id">ID</label>
+            <input ngModel #id="ngModel" class="id" name="id" id="id" type="number" form-control>
+            <label for="fname">First Name</label>
+            <input ngModel #fname="ngModel" class="fname" name="fname" id="fname" type="text" form-control>
+            <label for="lname">Last Name</label>
+            <input ngModel #lname="ngModel" class="lname" name="lname" id="lname" type="text" form-control>
+            <label for="DOB">DOB</label>
+            <input ngModel #DOB="ngModel" class="DOB" name="DOB" id="DOB" type="date" form-control>
+            <!-- <label for="age">Age</label>
+            <input ngModel #age="ngModel" class="age" name="age" id="age" type="text" form-control> -->
+            <button>Edit User</button>
+        </div>
+    </div>
+
+</form>
